@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calcolatore Resina</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('img/view-luxurious-hotel-interior-space.jpg');
+            background-size: cover; /* Rende l'immagine proporzionata al body */
+            background-position: center; /* Centra l'immagine */
+            background-repeat: no-repeat; /* Evita la ripetizione dell'immagine */
+            min-height: 100vh; /* Imposta l'altezza minima del body */
+        }
+        .card {
+            margin-top: 50px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title text-center">Calcolatore Resina Epossidica</h1>
+                    <form action="/calcola" method="post">
+                        <div class="mb-3">
+                            <label for="lunghezza" class="form-label">Lunghezza (cm)</label>
+                            <input type="number" id="lunghezza" name="lunghezza" step="1" class="form-control" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="larghezza" class="form-label">Larghezza (cm)</label>
+                            <input type="number" id="larghezza" name="larghezza" step="1" class="form-control" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="altezza" class="form-label">Altezza (mm)</label>
+                            <input type="number" id="altezza" name="altezza" step="0.01" class="form-control" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="rapporto" class="form-label">Rapporto Resina:Indurente (es. 2:1)</label>
+                            <input type="text" id="rapporto" name="rapporto" placeholder="es. 2:1" class="form-control" required>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Calcola</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS (necessario per alcune funzionalità come le modali) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
