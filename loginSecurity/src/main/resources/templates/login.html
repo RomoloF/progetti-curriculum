@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>Spring Security Example</title>
+</head>
+<body>
+	<div th:if="${param.error}">Invalid username and password.</div>
+	<div th:if="${param.logout}">You have been logged out.</div>
+	<form th:action="@{/login}" method="post">
+		<div>
+			<label> User Name : <input type="text" name="username" />
+			</label>
+		</div>
+		<div>
+			<label> Password: <input type="password" name="password" />
+			</label>
+		</div>
+		<div>
+			<input type="submit" value="Sign In" />
+		</div>
+	</form>
+</body>
+</html>
+
+<!-- Questo modello Thymeleaf presenta un modulo che cattura un nome utente e una password e li invia a /login. Come configurato, Spring Security fornisce un filtro che intercetta tale richiesta e autentica l'utente. Se l'utente non riesce ad autenticarsi, la pagina viene reindirizzata a /login?errore la tua pagina visualizza il messaggio di errore appropriato. Dopo aver effettuato correttamente la disconnessione, la tua applicazione viene inviata a /login?logoute la tua pagina visualizza il messaggio di successo appropriato.
+
+Infine, devi fornire al visitatore un modo per visualizzare il nome utente corrente e disconnettersi. Per farlo, aggiorna per hello.htmlsalutare l'utente corrente e contenere un Sign Outmodulo, come mostra il seguente elenco (da src/main/resources/templates/hello.html): -->
