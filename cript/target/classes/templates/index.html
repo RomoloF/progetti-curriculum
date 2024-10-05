@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crypto Operations</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	<!-- Inclusione del frammento navbar -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+    
+    
+    <!-- Contenuto principale -->
+    <div class="container mt-5" style="background-color: blue;border: 10px solid black;">
+        <div class="jumbotron"  style="background-color: red;border: 2px solid black;margin-top: 20px; margin-bottom: 20px;">
+            <h1 class="display-3">Benvenuto alle Operazioni di Criptografia</h1>
+            <p class="lead">Usa la barra di navigazione per criptare un testo, decriptare un testo o generare un nuovo Client ID e Secret.</p>
+            <hr class="my-2">
+            <p>Questa applicazione offre semplici operazioni crittografiche utilizzando la crittografia AES.</p>
+            <a class="btn btn-primary btn-lg" th:href="@{/encrypt}" role="button">Inizia</a>
+        </div>
+    </div>
+    
+    <div class="container mt-5" style="background-color: blue;border: 10px solid rgb(201, 55, 55);">
+	    <div class="jumbotron"  style="background-color: green;border: 2px solid black;margin-top: 20px; margin-bottom: 20px; ">
+		    <h1 class="display-3"> Benvenuto nell'applicazione TbClients e TbClientsCall</h1>
+		    <hr class="my-2">
+		    <p>Questa è una semplice applicazione web che ti permette di gestire le entità TbClients.</p>
+		    <a href="/api/clients">Vista di tutti Clients</a>
+		    <a href="/api/calls">Vista di ClientsCalls</a>
+		    <a href="http://localhost:8080/swagger-ui/index.html">Vista SWAGGER</a>
+	    </div>
+	</div>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
