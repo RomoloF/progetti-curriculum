@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Conferma Preventivo e salvato nel DB .....</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 th:text="${message}"></h1>
+        
+        <p>Dettagli del preventivo accettato:</p>
+        <ul>
+            <li>Nome Preventivo: <span th:text="${preventivo.nomePreventivo}"></span></li>
+            <li>Tipo di Lavoro: <span th:text="${preventivo.tipoLavoro}"></span></li>
+            <li>Data Creazione: <span th:text="${#dates.format(preventivo.dataCreazione, 'dd-MM-yyyy')}"></span></li>
+            
+            <li>Descrizioni dei lavori : <span th:text="${descrizioneConcatenata}"></span></li>
+          
+          <!-- Creazione di un elenco ordinato per visualizzare le descrizioni -->
+          <P><h1>Descrizioni dei lavori</h1></P>
+			    <ol>
+			        <li th:each="descrizione : ${listadescrizioni}" 
+			            th:text="${descrizione}"></li>
+			    </ol>
+          
+          
+            
+            
+            
+            
+            
+            <li>Prezzo totale Preventivo : <span th:text="${preventivo.prezzoTotalePreventivo}"></span></li>
+            <!-- Aggiungi altri dettagli del preventivo se necessario -->
+        </ul>
+        <button class="btn btn-primary" onclick="window.location.href='/'">Torna alla Home</button>
+    </div>
+</body>
+</html>

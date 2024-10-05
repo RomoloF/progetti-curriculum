@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettaglio Lavoro di Manutenzione</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">Dettaglio Lavoro di Manutenzione</h3>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Codice: <span th:text="${lavoro.codice}"></span></h5>
+                        <p class="card-text"><strong>Descrizione:</strong> <span th:text="${lavoro.descrizione}"></span></p>
+                        <p class="card-text"><strong>Prezzo:</strong> €<span th:text="${lavoro.prezzo}"></span></p>
+                       <!-- <p class="card-text"><strong>Data di Creazione:</strong> <span th:text="${#dates.format(lavoro.dataCreazione, 'dd/MM/yyyy')}"></span></p>-->
+                        
+                        <!-- Pulsanti per Azioni -->
+                        <div class="mt-4">
+                            <a th:href="@{/lavoriManutenzione/modifica/{id}(id=${lavoro.id})}" class="btn btn-warning">Modifica</a>
+                            <a th:href="@{/lavoriManutenzione}" class="btn btn-secondary">Indietro alla Lista</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (opzionale, per funzionalità avanzate) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

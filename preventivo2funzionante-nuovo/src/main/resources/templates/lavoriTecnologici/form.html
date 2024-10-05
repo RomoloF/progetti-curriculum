@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Form Lavori Tecnologici</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://via.placeholder.com/1920x1080') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div th:insert="~{fragments/header :: block-header}"></div>
+
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+               <!-- Usa th:if e th:unless per la condizione -->
+                       <h3 class="mb-0" th:if="${lavoro.id != 0}">Modifica Lavoro Tecnologico</h3>
+                       <h3 class="mb-0" th:if="${lavoro.id == 0}">Nuovo Lavoro Tecnologico</h3>
+            </div>
+            <div class="card-body">
+            <!--<form th:action="@{/lavoriRestauro/new}" th:object="${lavoro}" method="post">-->
+           <form th:action="@{${lavoro.id == null} ? '/lavoriTecnologici/new' : '/lavoriTecnologici/edit/' + lavoro.id}" th:object="${lavoro}" method="post">
+           
+           <div class="form-group">   
+		        <label for="id">Id:</label>
+		        <input type="number" id="id" name="id" th:field="*{id}" class="form-control" required>
+   		 </div>
+   		 
+		    <div class="form-group">	    
+		        <label for="_codice">Codice:</label>
+		        <input type="text" id="codice" name="codice" th:field="*{codice}" class="form-control" required>
+		    </div>
+	    
+		    <div class="form-group">
+		        <label for="descrizione">Descrizione:</label>
+		        <textarea id="descrizione" name="descrizione" th:field="*{descrizione}" class="form-control" rows="4" required></textarea>
+		    </div>
+    
+		    <div class="form-group">
+		        <label for="prezzo">Prezzo:</label>
+		        <input type="number" id="prezzo" name="prezzo" th:field="*{prezzo}" class="form-control" step="0.01" required>
+		    </div>
+		    
+    <div class="text-center">
+        <button type="submit" class="btn btn-success mt-3"
+                th:text="${lavoro.id != null} ? 'Aggiorna' : 'Salva'"></button>
+        <a href="/lavoriTecnologici" class="btn btn-secondary mt-3">Annulla</a>
+    </div>
+</form>
+
+
+
+            </div>
+        </div>
+    </div>
+    
+    <div th:insert="~{fragments/footer :: footer}"></div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

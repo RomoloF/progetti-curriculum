@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cerca Utente</title>
+</head>
+<body>
+    <h1>Cerca Utente registrato nel sistema ....</h1>
+    <form action="/searchUtente" method="get">
+        <label for="id">ID Utente:</label>
+        <input type="text" id="id" name="id">
+        <br>
+        <label for="email">Email Utente:</label>
+        <input type="text" id="email" name="email">
+        <br>
+        <button type="submit">Cerca</button>
+    </form>
+
+    <div th:if="${utente != null}">
+        <h2>Dettagli Utente</h2>
+        <p>ID: <span th:text="${utente.idutente}"></span></p>
+        <p>Nome: <span th:text="${utente.nome}"></span></p>
+        <p>Cognome: <span th:text="${utente.cognome}"></span></p>
+        <p>Email: <span th:text="${utente.email}"></span></p>
+        <p>Data di Nascita: <span th:text="${utente.dataDiNascita}"></span></p>
+        <p>Creato Il: <span th:text="${utente.creatoIl}"></span></p>
+        <p>Modificato Il: <span th:text="${utente.modificatoIl}"></span></p>
+    </div>
+
+    <div th:if="${utente == null}">
+        <p>Utente non trovato.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crea Preventivo</title>
+    <!-- Includi Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fGJhY2tncm91bmR8ZW58MHx8fHwxNjE4NzE5Mzk2&ixlib=rb-1.2.1&q=80&w=1080');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+        }
+        .card-custom {
+            border-radius: 15px;
+            border: 2px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+        .card-selected {
+            background-color: #e0f7fa;
+            border-color: #007bff;
+        }
+        .fixed-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 40px;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+            position: absolute;
+            top: 50%;
+            right: -230px;
+            transform: translateY(-80%);
+            z-index: 1000;
+            cursor: pointer;
+            white-space: nowrap;
+            width: auto;
+        }
+        .disabled {
+            background-color: #cccccc !important;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Inclusione del frammento usando la nuova sintassi -->
+    <div th:insert="~{fragments/header :: block-header}"></div>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Crea Preventivo per <span th:text="${utente.nome.toUpperCase()}"></span></h1>
+        <h2 class="text-center mb-4">Tipo di lavoro <span th:text="${tipoLavoro}"></span></h2>
+
+        <form th:action="@{/preventivo/crea}" method="post" id="formPreventivo">
+            <!-- Campi nascosti per ID utente e tipo di lavoro -->
+            <input type="hidden" name="utenteId" th:value="${utente.idutente}">
+            <input type="hidden" name="tipoLavoro" th:value="${tipoLavoro}">
+
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <!-- Card per le lavorazioni -->
+                    <div class="card card-custom" th:each="lavoro : ${lavori}" th:id="'card_' + ${lavoro.id}">
+                        <div class="card-body">
+                            <h5 class="card-title">Seleziona Lavoro:</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <label class="form-check-label">
+                                        <!-- Checkbox per selezionare la lavorazione -->
+                                        <input class="form-check-input" type="checkbox" name="idLavorazioni" 
+                                               th:id="'idLavorazioni_' + ${lavoro.id}" th:value="${lavoro.id}"
+                                               onclick="toggleCardSelection(this)">
+                                        <span th:text="${lavoro.descrizione + ' - Prezzo: € ' + lavoro.prezzo}"></span>
+                                    </label> 
+
+                                    <!-- Campo di input per la quantità -->
+                                    <label for="quantita">Quantità delle lavorazioni:</label>
+                                    <input type="number" th:name="'quantita[' + ${lavoro.id} + ']'" 
+                                           th:id="'quantita_' + ${lavoro.id}" min="1" step="1" 
+                                           class="form-control" th:value="1"/>
+
+                                    <small class="text-danger">Seleziona la checkbox in alto per aggiungere la lavorazione al preventivo.</small>
+                                    <button type="submit" class="btn btn-primary btn-block mt-3 fixed-button disabled btn-toggle" id="submitButton" disabled>Aggiungi la lavorazione</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pulsante per calcolare il preventivo -->
+            <!--<button type="submit" class="btn btn-primary btn-block mt-3 fixed-button disabled" id="submitButton" disabled>Aggiungi a Preventivo la lavorazione</button>-->
+        </form>
+    </div>
+       <!--<button type="submit" class="btn btn-primary btn-block mt-3" id="submitButtonPrincipale" >Vai</button>-->
+    <div th:insert="~{fragments/footer :: footer}"></div>
+
+    <script>
+        function toggleCardSelection(checkbox) {
+        	// Seleziona tutti i checkbox
+            var card = document.getElementById('card_' + checkbox.value);
+         // Seleziona tutti i pulsanti con la classe 'btn-toggle'
+            var submitButtons = document.querySelectorAll('.btn-toggle');
+         
+         
+         
+         
+            if (checkbox.checked) {
+                card.classList.add('card-selected'); // Aggiungi la classe per evidenziare la card
+            } else {
+                card.classList.remove('card-selected'); // Rimuovi la classe se la checkbox è deselezionata
+            }
+            toggleSubmitButton();
+        }
+
+        function toggleSubmitButtons() {
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            var submitButtons = document.querySelectorAll('.btn-toggle');
+            
+            var isAnyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+            
+            submitButtons.forEach(button => {
+                button.disabled = !isAnyChecked;
+                
+                if (isAnyChecked) {
+                    button.classList.remove('disabled');
+                } else {
+                    button.classList.add('disabled');
+                }
+            });
+        }
+
+        // Chiamare toggleSubmitButtons all'avvio per impostare lo stato iniziale
+        toggleSubmitButtons();
+
+        // Aggiungi l'event listener per i checkbox
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', toggleSubmitButtons);
+        });
+    </script>
+
+    <!-- Includi Bootstrap JS e dipendenze -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

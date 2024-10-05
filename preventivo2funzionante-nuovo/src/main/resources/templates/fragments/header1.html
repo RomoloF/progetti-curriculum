@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<style>
+    .custom-tooltip .tooltip-inner {
+        font-size: 1.25rem; /* Dimensione del testo ingrandita */
+        padding: 0.75rem 1.25rem; /* Aumenta il padding per adattare il testo */
+    }
+    .custom-tooltip .tooltip-arrow {
+        border-width: 1.5rem; /* Dimensione maggiore della freccia del tooltip */
+    }
+</style>
+
+<body>
+	 <!-- Definizione del frammento "block-header" -->
+	<header th:fragment="block-header">
+	
+		<nav class="navbar navbar-expand-lg navbar-light"
+			style="background-color: rgb(192, 191, 188); border-radius: 30px; overflow: hidden; display: flex; justify-content: center; padding: 10px;">
+			
+			 <div class="header-logo" id="logo" >
+				<a class="navbar-brand" href="/"> <img th:src="@{/img/logo.png}"
+					alt="Logo" class="img-fluid"
+					title="Applicazione sviluppata da [Nome dell'impresa]. Per maggiori informazioni, visita il nostro sito."
+					style="max-width: 50px; margin-right: 10px;">FR
+				</a>
+			</div>
+			
+			<div>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNav" aria-controls="navbarNav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+						<button id="btnPreventivo"
+						 	class="btn btn-primary btn-sm"
+							
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							onclick="window.location.href='/preventivo/selezionaUtente'">PREVENTIVO</button>
+					</li>
+					<li class="nav-item">
+						<button class="btn btn-primary btn-sm"
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							onclick="window.location.href='/utenti'">Lista Utenti</button>
+					</li>
+					<li class="nav-item">
+						<button class="btn btn-success btn-sm"
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							onclick="window.location.href='/utenti/new'">Registrazione
+							Utente</button>
+					</li>
+					<li class="nav-item">
+						<button class="btn btn-danger btn-sm"
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							title="Qui trovi una lista di tutti i lavori o articoli ELETTRICI"
+							onclick="window.location.href='/lavori-elettrici'">Lavori
+							Elettrici</button>
+					</li>
+					<li class="nav-item">
+						<button class="btn btn-warning btn-sm"
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							onclick="window.location.href='/lavori-edili'">Lavori
+							Edili</button>
+					</li>
+					<li class="nav-item">
+						<button class="btn btn-info btn-sm"
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							onclick="window.location.href='/lavoriManutenzione'">Lavori
+							di Manutenzione</button>
+					</li>
+					<li class="nav-item">
+						<button class="btn btn-secondary btn-sm"
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							onclick="window.location.href='/lavoriRestauro'">Lavori
+							di Restauro</button>
+					</li>
+					<li class="nav-item">
+						<button class="btn btn-dark btn-sm"
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							onclick="window.location.href='/lavoriTecnologici/list'">Lavori
+							Tecnologici</button>
+					</li>
+					<li class="nav-item">
+						<button class="btn btn-warning btn-sm"
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							onclick="window.location.href='/lavorazioni'">Lavorazioni</button>
+					</li>
+					<li class="nav-item">
+						<button class="btn btn-warning btn-sm"
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							onclick="window.location.href='/preventiviNuovo/crea'">/preventiviNuovo/crea</button>
+					</li>
+				</ul>
+			</div>
+
+		</nav>
+
+
+	<!-- Script JavaScript per mostrare l'avviso al passaggio del mouse sul pulsante preventivo-->
+    <script>
+        function mostraAvvisoRegistrazione() {
+            alert("Per favore, registrati prima di procedere con il preventivo.");
+        }
+    </script>
+	</header>
+
+</body>
+</html>

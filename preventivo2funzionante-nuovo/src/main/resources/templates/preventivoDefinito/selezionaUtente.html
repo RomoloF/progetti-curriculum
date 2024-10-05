@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Seleziona Utente</title>
+</head>
+<body>
+    <h1>Seleziona un Utente per Visualizzare i Preventivi</h1>
+    <form th:action="@{/preventivoDefinito/visualizza}" method="get">
+        <label for="idUtente">ID Utente:</label>
+        <input type="number" id="idUtente" name="idUtente" required>
+        <button type="submit">Visualizza Preventivi</button>
+    </form>
+</body>
+</html>

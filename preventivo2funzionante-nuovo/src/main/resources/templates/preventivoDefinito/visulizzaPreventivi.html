@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Preventivi per Utente</title>
+</head>
+<body>
+    <h1>Preventivi per l'Utente Selezionato</h1>
+
+    <div th:if="${preventiviUtente != null && !preventiviUtente.isEmpty()}">
+        <ul>
+            <!-- Itera attraverso i preventivi associati all'utente -->
+            <li th:each="preventivo : ${preventiviUtente}">
+                <h3>Nome Preventivo: <span th:text="${preventivo.nomePreventivo}"></span></h3>
+                <p><strong>Tipo di Lavoro:</strong> <span th:text="${preventivo.tipoLavoro}"></span></p>
+                <p><strong>Data Creazione:</strong> <span th:text="${#dates.format(preventivo.dataCreazione, 'dd-MM-yyyy')}"></span></p>
+                <p><strong>Descrizioni dei lavori:</strong></p>
+                <ol>
+                    <!-- Itera attraverso le descrizioni del preventivo -->
+                    <li th:each="descrizione : ${preventivo.descrizione.split('<br>')}" 
+                        th:text="${descrizione}"></li>
+                </ol>
+                <p><strong>Prezzo totale Preventivo:</strong> <span th:text="${preventivo.prezzoTotalePreventivo}"></span> €</p>
+                <hr/>
+            </li>
+        </ul>
+    </div>
+    
+    <div th:if="${preventiviUtente == null || preventiviUtente.isEmpty()}">
+        <p>Nessun preventivo trovato per l'utente selezionato.</p>
+    </div>
+</body>
+</html>

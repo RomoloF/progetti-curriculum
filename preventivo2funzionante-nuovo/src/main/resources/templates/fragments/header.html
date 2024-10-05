@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- Link al CSS di Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    .custom-tooltip .tooltip-inner {
+        font-size: 10.25rem; /* Aumenta la dimensione del testo */
+        padding: 1rem 1.5rem; /* Aumenta il padding per adattare il testo */
+    }
+    .custom-tooltip .tooltip-arrow {
+        border-width: 4.5rem; /* Aumenta la dimensione della freccia del tooltip */
+    }
+</style>
+</head>
+
+<body>
+    <!-- Definizione del frammento "block-header" -->
+    <header th:fragment="block-header">
+        <nav class="navbar navbar-expand-lg navbar-light"
+            style="background-color: rgb(192, 191, 188); border-radius: 30px; overflow: hidden; display: flex; justify-content: center; padding: 10px;">
+            
+            <div class="header-logo custom-tooltip" id="logo">
+                <a class="navbar-brand" href="/"> 
+                    <img th:src="@{/img/logo.png}" alt="Logo" class="img-fluid"
+                        title="Applicazione sviluppata da FIORENZA ROMOLO. Per maggiori informazioni, visita il nostro sito."
+                        style="max-width: 50px; margin-right: 10px;">FR
+                </a>
+            </div>
+            
+            <div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarNav" aria-controls="navbarNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <button id="btnPreventivo"
+                                class="btn btn-primary btn-sm custom-tooltip"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Accedi ai servizi di preventivo"
+                                style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+                                onclick="window.location.href='/preventivo/selezionaUtente'">PREVENTIVO</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-primary btn-sm custom-tooltip"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Visualizza la lista utenti"
+                                style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+                                onclick="window.location.href='/utenti'">Lista Utenti</button>
+                        </li>
+                        
+                         <li class="nav-item">
+                            <button class="btn btn-success btn-sm custom-tooltip"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Cerca Utente o per Email o per Id registrato nel sistema ....."
+                                style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+                                onclick="window.location.href='/searchUtente'">Cerca Utente</button>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <button class="btn btn-success btn-sm custom-tooltip"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Registrazione di un nuovo utente"
+                                style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+                                onclick="window.location.href='/utenti/new'">Registrazione Utente</button>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <button class="btn btn-success btn-sm custom-tooltip"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Registrazione di un nuovo utente"
+                                style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+                                onclick="window.location.href='/api/register'">Controllo EMAIL</button>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <button class="btn btn-danger btn-sm custom-tooltip"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Visualizza la lista di tutti i lavori o articoli elettrici"
+                                style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+                                onclick="window.location.href='/lavori-elettrici'">Lavori Elettrici</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-warning btn-sm custom-tooltip"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Visualizza i lavori edili"
+                                style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+                                onclick="window.location.href='/lavori-edili'">Lavori Edili</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-info btn-sm custom-tooltip"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Visualizza i lavori di manutenzione"
+                                style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+                                onclick="window.location.href='/lavoriManutenzione'">Lavori di Manutenzione</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-secondary btn-sm custom-tooltip"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Visualizza i lavori di restauro"
+                                style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+                                onclick="window.location.href='/lavoriRestauro'">Lavori di Restauro</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-dark btn-sm custom-tooltip"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Visualizza i lavori tecnologici"
+                                style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+                                onclick="window.location.href='/lavoriTecnologici/list'">Lavori Tecnologici</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-warning btn-sm custom-tooltip"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Visualizza le lavorazioni"
+                                style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+                                onclick="window.location.href='/lavorazioni'">Lavorazioni</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-warning btn-sm custom-tooltip"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Crea un nuovo preventivo"
+                                style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+                                onclick="window.location.href='/preventiviNuovo/crea'">/preventiviNuovo/crea</button>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Script JavaScript per inizializzare i tooltip di Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                    return new bootstrap.Tooltip(tooltipTriggerEl)
+                })
+            })
+        </script>
+    </header>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cerca per Descrizione</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">Cerca Lavoro di Manutenzione per Descrizione</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Form per cercare il lavoro di manutenzione per descrizione -->
+                        <form th:action="@{/lavoriManutenzione/cercaPerDescrizione}" th:object="${lavoriRestauro}"   method="post">
+                            <div class="form-group">
+                                <label for="descrizione">Descrizione:</label>
+                                <input type="text" id="descrizione" name="descrizione" class="form-control" required>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary mt-3">Cerca</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

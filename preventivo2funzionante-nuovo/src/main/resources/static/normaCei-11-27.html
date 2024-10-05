@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Norma CEI 11-27</title>
+    <!-- Includi i CSS di Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+        /* Stile personalizzato per il footer */
+        .footer {
+            background-color: #343a40; /* Colore di sfondo scuro */
+            color: #ffffff; /* Colore del testo bianco */
+            padding: 20px 0; /* Spaziatura superiore e inferiore */
+            text-align: center; /* Allineamento al centro */
+            border-top-left-radius: 20px; /* Bordo arrotondato in alto a sinistra */
+            border-top-right-radius: 20px; /* Bordo arrotondato in alto a destra */
+            border-bottom: 2px solid #ffffff; /* Bordo inferiore bianco */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombra per maggiore contrasto */
+            margin-top: 30px; /* Spaziatura superiore per distanziarlo dal contenuto */
+        }
+		.footer-di {
+		border-radius: 40px; /* Bordo arrotondato per il contenitore */
+		background-color: rgba(0, 0, 0, 0.1);
+		}
+        .footer-container {
+            border-radius: 40px; /* Bordo arrotondato per il contenitore */
+            background-color: rgba(0, 0, 0, 0.1); /* Sfondo semi-trasparente per il contenitore del testo */
+            padding: 30px; /* Spaziatura interna */
+        }
+    </style>
+
+<body style="background-color: #e1feff;"> 
+    <nav class="navbar navbar-expand-lg navbar-light"
+			style="background-color: rgb(192, 191, 188); border-radius: 30px; overflow: hidden; display: flex; justify-content: center; padding: 10px;">
+			
+			 <div class="header-logo">
+				<a class="navbar-brand" href="/"> <img src="/img/logo.png" 
+					alt="Logo" class="img-fluid"
+					style="max-width: 50px; margin-right: 10px;">FR
+				</a>
+			</div>
+			
+			<div>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNav" aria-controls="navbarNav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+						<button id="btnPreventivo"
+						 	class="btn btn-primary btn-sm"
+							
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							onclick="window.location.href='/preventivo/selezionaUtente'">PREVENTIVO</button>
+					</li>
+					<li class="nav-item">
+						<button class="btn btn-primary btn-sm"
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							onclick="window.location.href='/utenti'">Lista Utenti</button>
+					</li>
+					<li class="nav-item">
+						<button class="btn btn-success btn-sm"
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							onclick="window.location.href='/utenti/new'">Registrazione
+							Utente</button>
+					</li>
+					<li class="nav-item">
+						<button class="btn btn-danger btn-sm"
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							onclick="window.location.href='/lavori-elettrici'">Lavori
+							Elettrici</button>
+					</li>
+					<li class="nav-item">
+						<button class="btn btn-warning btn-sm"
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							onclick="window.location.href='/lavori-edili'">Lavori
+							Edili</button>
+					</li>
+					<li class="nav-item">
+						<button class="btn btn-info btn-sm"
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							onclick="window.location.href='/lavoriManutenzione'">Lavori
+							di Manutenzione</button>
+					</li>
+					<li class="nav-item">
+						<button class="btn btn-secondary btn-sm"
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							onclick="window.location.href='/lavoriRestauro'">Lavori
+							di Restauro</button>
+					</li>
+					<li class="nav-item">
+						<button class="btn btn-dark btn-sm"
+							style="border-radius: 25px; border: 2px solid black; margin: 3px;"
+							onclick="window.location.href='/lavoriTecnologici/list'">Lavori
+							Tecnologici</button>
+					</li>
+				</ul>
+			</div>
+
+		</nav>
+
+    
+
+    <!-- Contenuto principale -->
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Norma CEI 11-27</h1>
+
+        <!-- Descrizione generale -->
+        <div class="card mb-4">
+            <div class="card-header bg-dark text-white">
+                Descrizione Generale
+            </div>
+            <div class="card-body">
+                <p>La norma CEI 11-27 fornisce le linee guida per l'esecuzione sicura dei lavori su impianti elettrici e per la protezione delle persone che operano su, o vicino a, impianti elettrici.</p>
+                <p>Essa si applica a una vasta gamma di contesti, dai lavori di manutenzione alle operazioni di installazione e modifica su impianti elettrici in bassa, media e alta tensione.</p>
+            </div>
+        </div>
+
+        <!-- Sezioni principali -->
+        <div class="row">
+            <!-- Scopo e Campo di Applicazione -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        Scopo e Campo di Applicazione
+                    </div>
+                    <div class="card-body">
+                        <p>La norma stabilisce i requisiti di sicurezza necessari per l'esecuzione di lavori su impianti elettrici o in prossimità degli stessi.</p>
+                        <p>Si applica a lavori in BT, MT e AT, compresi lavori fuori tensione, sotto tensione e in prossimità di parti attive.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Definizioni e Terminologia -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        Definizioni e Terminologia
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><strong>PES:</strong> Persona Esperta.</li>
+                            <li><strong>PAV:</strong> Persona Avvertita.</li>
+                            <li><strong>PEI:</strong> Persona Idonea.</li>
+                            <li><strong>Lavori Fuori Tensione:</strong> Operazioni su impianti messi fuori tensione.</li>
+                            <li><strong>Lavori Sotto Tensione:</strong> Operazioni su parti attive sotto tensione.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Altre Sezioni -->
+        <div class="row">
+            <!-- Organizzazione del Lavoro -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        Organizzazione del Lavoro
+                    </div>
+                    <div class="card-body">
+                        <p>La pianificazione dei lavori elettrici deve includere la valutazione dei rischi, la definizione dei ruoli e la preparazione di piani di emergenza.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formazione e Qualifica del Personale -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header bg-warning text-white">
+                        Formazione e Qualifica del Personale
+                    </div>
+                    <div class="card-body">
+                        <p>Il personale deve essere adeguatamente formato e qualificato. Le categorie principali includono PES, PAV e PEI.</p>
+                        <p>La formazione deve essere documentata e aggiornata periodicamente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <section id="articolo2">
+            <h2>Articolo 2: Definizioni e Classificazioni</h2>
+
+            <!-- Contenuto completo dell'Articolo 2 -->
+            <h3>2.1 Definizioni</h3>
+            <p>Questa sezione comprende le definizioni essenziali per la comprensione della Norma CEI 11-27, tra cui:</p>
+            <ul>
+                <li><strong>Lavoro sotto tensione:</strong> Intervento su parti attive di un impianto in tensione.</li>
+                <li><strong>Lavoro fuori tensione:</strong> Intervento su un impianto dopo averlo messo fuori tensione.</li>
+                <li><strong>Lavoro in prossimità:</strong> Intervento vicino a parti attive, ma senza contatto diretto.</li>
+                <!-- Inserisci qui le altre definizioni complete -->
+            </ul>
+
+            <h3>2.2 Classificazioni dei Lavori Elettrici</h3>
+            <p>I lavori elettrici sono classificati come segue:</p>
+            <ol>
+                <li>Lavori sotto tensione.</li>
+                <li>Lavori fuori tensione.</li>
+                <li>Lavori in prossimità.</li>
+                <!-- Aggiungi dettagli e classificazioni complete -->
+            </ol>
+
+            <h3>2.3 Altri Concetti Importanti</h3>
+            <p>Ulteriori dettagli sui concetti di rischio elettrico, misure di protezione, ecc.</p>
+            <!-- Aggiungi ulteriori sezioni dettagliate secondo il contenuto della norma -->
+        </section>
+		 <!-- Sezione dedicata agli esempi di lavori elettrici -->
+        <section id="esempi">
+            <h2>Esempi di Lavori Elettrici</h2>
+
+            <h3>Lavori sotto Tensione</h3>
+            <p>Esempi di lavori elettrici che vengono eseguiti su impianti in stato di tensione:</p>
+            <ul>
+                <li>Sostituzione di un contatore elettrico in un'abitazione senza interrompere l'alimentazione.</li>
+                <li>Riparazione di un cavo in una cabina elettrica mentre è sotto tensione.</li>
+                <li>Installazione di un interruttore su un circuito attivo, utilizzando strumenti isolati.</li>
+            </ul>
+
+            <h3>Lavori fuori Tensione</h3>
+            <p>Esempi di lavori eseguiti su impianti che sono stati previamente messi fuori tensione:</p>
+            <ul>
+                <li>Sostituzione di una lampada dopo aver disattivato l'interruttore.</li>
+                <li>Manutenzione di un trasformatore dopo aver disconnesso tutte le fonti di alimentazione.</li>
+                <li>Riparazione di un quadro elettrico disalimentato.</li>
+            </ul>
+
+            <h3>Lavori in Prossimità</h3>
+            <p>Esempi di lavori eseguiti vicino a parti attive in tensione, senza contatto diretto:</p>
+            <ul>
+                <li>Pulizia di isolatori su linee aeree ad alta tensione, mantenendo la distanza di sicurezza.</li>
+                <li>Installazione di un cavo vicino a linee in tensione, utilizzando protezioni adeguate.</li>
+                <li>Verifica visiva di un impianto senza contatto con le parti sotto tensione.</li>
+            </ul>
+        </section>
+		
+        <section id="conclusioni">
+            <h2>Conclusioni</h2>
+            <p>Per una corretta applicazione della Norma CEI 11-27, è essenziale comprendere appieno tutte le definizioni e le classificazioni dei lavori elettrici.</p>
+        </section>
+    </main>
+        
+		<!--<footer th:fragment="footer" class="footer">-->
+    <div class="footer-di">
+        <div class="container footer-container ">
+            <span style="background-color: rgb(192, 191, 188); position: center">© 2024 MyApp. SITO DI ROMOLO FIORENZA - Tutti i diritti riservati.</span>
+        </div>
+        </div>
+    </footer>
+        <!-- Footer della pagina -->
+        <div th:insert="fragments/footer :: footer"></div>
+    </div>
+
+    <!-- Includi i JS di Bootstrap e dipendenze -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+</body>
+</html>

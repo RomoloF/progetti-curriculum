@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrazione Utente</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css">
+    <script>
+        // Funzione per validare il formato dell'email
+        function validateEmail() {
+            var emailInput = document.getElementById("email").value;
+            var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            var message = document.getElementById("emailMessage");
+
+            if (!emailPattern.test(emailInput)) {
+                message.textContent = "Inserisci un indirizzo email valido.";
+                return false;
+            } else {
+                message.textContent = "";
+                return true;
+            }
+        }
+
+        // Funzione per gestire la sottomissione del form
+        function submitForm(event) {
+            if (!validateEmail()) {
+                event.preventDefault(); // Previene l'invio del form se l'email non è valida
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Registrazione Utente</h2>
+    <form action="/api/send-verification-email" method="post" onsubmit="submitForm(event)">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required oninput="validateEmail()">
+            <div id="emailMessage" class="text-danger"></div>
+        </div>
+        <button type="submit" class="btn btn-primary">Invia Codice di Verifica</button>
+    </form>
+</div>
+</body>
+</html>
