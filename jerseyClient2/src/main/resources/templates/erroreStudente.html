@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Errore Studente</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	 <!-- Utilizzo della sintassi racchiusa per il frammento -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+    <div class="container">
+        <h1 class="my-4">Errore</h1>
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Studente non trovato</h4>
+            <p>Lo studente richiesto non è stato trovato. Per favore, verifica l'ID e riprova.</p>
+            <hr>
+            <a href="/" class="btn btn-primary">Torna alla lista studenti</a>
+        </div>
+    </div>
+    <!-- Includi jQuery, Popper.js e Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

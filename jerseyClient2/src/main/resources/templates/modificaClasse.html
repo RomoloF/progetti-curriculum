@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifica Classe</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url('/img/scuola.jpg') no-repeat center center fixed; 
+            background-size: cover;
+           
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.7); /* semi-transparent background */
+            max-width: 350px; /* Imposta la larghezza massima del form */
+		    max-height: 500px;
+        }
+        .rounded-custom {
+            border-radius: 15px; /* arrotondamento personalizzato */
+        }   
+        .container {
+            padding-top: 50px;
+        }
+        
+		.card.formRiduci {
+		    max-width: 400px; /* Imposta la larghezza massima del form */
+		    max-height: 100px;
+		    margin: 0 auto; /* Centra il form all'interno della card */
+		    margin-top: 5px ;
+		    padding: 10px; /* Aggiungi un po' di spazio interno */
+		}
+		.btn-primary,
+        .btn-secondary,
+        .btn-danger 
+        .btn-success{
+            border-radius: 50px; /* Rounded corners */
+            padding: 5px 10px; /* Adjust padding as needed */
+            font-size: 12px; /* Riduci la grandezza del font */
+                }
+    </style>
+</head>
+<body>
+	   <!-- Utilizzo della sintassi racchiusa per il frammento -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card  rounded-custom formRiduci">
+                    <div class="card-header">
+                        <h3>Modifica Classe</h3>
+                    </div>
+                    <div class="card-body ">
+                        <form   class="formRiduci"  th:action="@{/classi/modifica/{id}(id=${classe.id})}" th:object="${classe}" method="post">
+                        
+                            <div class="form-group  ">
+                                <label for="annoScolastico" class="form-label">Anno scolastico Classe</label>
+                                <input type="text" class="form-control" id="annoScolastico" nome="annoScolastico" th:field= "*{annoScolastico}" 			placeholder="Inserisci l'anno scolatico della classe" required>
+                            </div>
+                            
+                            <div>
+					        <label for="classeAnno" class="form-label">Classe e Anno</label>
+					        <input type="text" class="form-control" id="classeAnno" name="classeAnno" th:field= "*{classeAnno}" 							placeholder="Inserisci la classe e anno" required>
+					       </div>
+					      
+					       <div>
+					        <label for="sezione" class="form-label">Sezione</label>
+					        <input type="text" class="form-control" id="sezione" name="sezione" th:field= "*{sezione}"									 placeholder="Inserisci la sezione " required>
+					       </div>
+					       
+					       <div class="mb-3">
+					        <label for="aulaNum" class="form-label">Numero Aula</label>
+					        <input type="text" class="form-control" id="aulaNum" name="aulaNum" th:field= "*{aulaNum}" 									placeholder="Inserisci il numero dell'aula" required>
+					       </div>
+					       
+					       <div class="mb-3">
+					        <label for="piano" class="form-label">Piano</label>
+					        <input type="text" class="form-control" id="piano" name="piano" th:field= "*{piano}" 										placeholder="Inserisci in che piano si trova" required>
+					       </div>
+                           
+                            <div class="form-group" >
+                                <button type="submit" class="btn btn-primary">Salva Modifiche</button>
+                                <a th:href="@{/}" class="btn btn-secondary">Annulla</a>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btn-group">
+              <a th:href="@{/classi/{id}(id=${classe.id})}"                 class="btn btn-primary btn-sm btn-rounded" >Visualizza</a>
+              <a th:href="@{/classi/modifica/{id}(id=${classe.id})}"        class="btn btn-secondary btn-sm btn-rounded">Modifica</a>
+              <a th:href="@{/classi/elimina/{id}(id=${classe.id})}"         class="btn btn-danger btn-sm btn-rounded">Elimina</a>
+            </div>
+    <!-- Includi jQuery, Popper.js e Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

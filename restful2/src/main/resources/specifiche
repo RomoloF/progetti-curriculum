@@ -1,0 +1,15 @@
+
+
+
+	GET /api/studenti: Recupera tutti gli studenti.
+	GET /api/studenti/{id}: Recupera uno studente specifico per ID.
+	POST /api/studenti: Crea un nuovo studente.
+	PUT /api/studenti/{id}: Aggiorna uno studente esistente.
+	DELETE /api/studenti/{id}: Elimina uno studente specifico per ID.
+
+
+	GET /api/classi: Recupera tutte le classi.
+	GET /api/classi/{id}: Recupera una classe specifica per ID.
+	POST /api/classi: Crea una nuova classe.
+	PUT /api/classi/{id}: Aggiorna una classe esistente.
+	DELETE /api/classi/{id}: Elimina una classe specifica per ID.

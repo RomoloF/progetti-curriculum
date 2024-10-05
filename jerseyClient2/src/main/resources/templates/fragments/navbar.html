@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Barra di Navigazione</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+		#mainNavbar {
+			display: none;
+			/* La navbar sarà inizialmente nascosta */
+			position: fixed;
+			/* La navbar sarà posizionata in modo fisso */
+			top: 0;
+			/* La navbar sarà posizionata all'inizio della pagina */
+			left: 0;
+			/* La navbar sarà posizionata all'inizio della pagina */
+			width: 100%;
+			/* La navbar occuperà l'intera larghezza della pagina */
+			background-color: #333;
+			/* Colore di sfondo per la navbar */
+			color: white;
+			/* Colore del testo */
+			padding: 10px;
+			/* Spaziatura interna per il contenuto della navbar */
+			z-index: 1000;
+			/* Assicura che la navbar sia sopra gli altri elementi */
+		}
+	</style>
+</head>
+
+<body>
+	<header th:fragment="navbar">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light" id="mainNavBar">
+			<a class="navbar-brand" href="#" style="font-weight: bold;">***La scuola***</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav" style="margin: auto;">
+					<li class="nav-item">
+						<a class="nav-link" href="/" th:href="@{/}" style="color: rgb(28, 113, 216);">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/studenti" th:href="@{/studenti}"
+							style="color: rgb(129, 61, 156);">Lista di Studenti</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/classi" th:href="@{/classi}" style="color: rgb(245, 194, 17);">Lista
+							di Classi</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/chiSiamo" th:href="@{/chiSiamo}"
+							style="color: rgb(38, 162, 105);">Chi Siamo</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/studenti/studentiRicercaNomeCognomeEmail"
+							th:href="@{/studenti/studentiRicercaNomeCognomeEmail}"
+							style="color: rgb(26, 95, 180);">Servizi</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/contatti" th:href="@{/contatti}" style="color: #555;">Contatti</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+							style="color: rgb(230, 97, 0);">
+							Ricerca per studenti
+						</a>
+						
+						
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown"
+							style="left: 50%; transform: translateX(-50%);">
+							<div>
+							<div class="dropdown-divider"></div> 	
+							</div>
+							
+    <a class="nav-link" th:href="@{/studenti/studentiRicercaNomeCognomeEmail}" style="color: #555;">Cerca per nome,cognome,email </a>
+    
+							
+							<a class="dropdown-item" th:href="@{/studenti/studentiRicercaNomeCognomeEmail}">Ricerca Studente per Nome</a>					
+							
+							<a class="dropdown-item" th:href="@{/studenti/studentiRicercaNomeCognomeEmail}">Ricerca Studente Cognome</a>
+							
+							<a class="dropdown-item" th:href="@{/studenti/studentiRicercaNomeCognomeEmail}">Ricerca studente per Email</a>
+							
+							<div class="dropdown-divider"></div>
+							
+							
+						</div>
+					</li>
+				</ul>
+			</div>
+
+
+		</nav>
+	</header>
+
+	<!-- JavaScript di Bootstrap (opzionale) -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<!-- JavaScript per nascondere e mostrare la navbar -->
+	<script>
+		// Funzione per mostrare la navbar quando si passa sopra con il mouse
+		function showNavbar() {
+			var navbar = document.getElementById('mainNavbar');
+			navbar.style.display = 'block';
+		}
+
+		// Funzione per nascondere la navbar all'inizio
+		function hideNavbar() {
+			var navbar = document.getElementById('mainNavbar');
+			navbar.style.display = 'none';
+		}
+
+		// Nasconde la navbar all'inizio
+		hideNavbar();
+
+		// Mostra la navbar quando passi sopra con il mouse
+		document.addEventListener('mouseover', function (event) {
+			var navbar = document.getElementById('mainNavbar');
+			if (event.clientY <= 50) {
+				showNavbar();
+			}
+		});
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifica Studente</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	   <!-- Utilizzo della sintassi racchiusa per il frammento -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+    <div class="container">
+        <h1 class="my-4">Modifica Studente</h1>
+        
+        <form th:action="@{'/studenti/modifica/' + ${studente.id}}" th:object="${studente}" method="post" id="modificaStudente" name="modificaStudente">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" th:field="*{nome}" placeholder="Inserisci il nome">
+            </div>
+            <div class="form-group">
+                <label for="cognome">Cognome</label>
+                <input type="text" class="form-control" id="cognome" th:field="*{cognome}" placeholder="Inserisci il cognome">
+            </div>
+            
+            
+           
+			    
+            <div class="form-group">
+                <label for="classe">Classe</label>
+                
+                <select class="form-control" id="classe" name="classe.id" th:field="*{classe.id}">
+					<option value="" th:text="'Vuoi cambiare la Classe'"></option>
+                    <option th:each="classe : ${classi}" th:value="${classe.id}" th:text="${classe.id}"></option>
+                </select>
+                
+            </div>
+            
+            
+            
+            <div class="form-group">
+                <label for="telefono">Telefono</label>
+                <input type="text" class="form-control" id="telefono" th:field="*{telefono}" placeholder="Inserisci il telefono">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Inserisci l'email">
+            </div>
+            
+            <div class="mb-3">
+        <label for="rifGenitore" class="form-label">Referente Genitore</label>
+        <input type="text" class="form-control" id="rifGenitore" name="rifGenitore" th:field="*{rifGenitore}" placeholder="Inserisci il nome del referente genitore">
+      </div>
+            
+            <button type="submit" class="btn btn-primary">Salva</button>
+            <a href="/" class="btn btn-secondary">Annulla</a>
+        </form>
+    </div>
+     <div class="btn-group">
+              <a th:href="@{/studenti/{id}(id=${studente.id})}"                  class="btn btn-primary btn-sm btn-rounded">Visualizza</a>
+              <a th:href="@{/studenti/modifica/{id}(id=${studente.id})}"         class="btn btn-secondary btn-sm btn-rounded">Modifica</a>              
+			  <a th:href="@{/studenti/cancella/{id}(id=${studente.id})}"            class="btn btn-danger btn-sm btn-rounded" >Elimina</a>
+				
+            </div>
+    <!-- Includi jQuery, Popper.js e Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

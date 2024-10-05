@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Ricerca Studenti</title>
+	<!-- Includi Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+		/* Aggiungiamo uno sfondo accattivante */
+		body {
+			background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0');
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+
+		.container.mt-5 {
+			margin-top: 40px;
+		}
+
+		.card {
+			margin-bottom: 20px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 95%;
+            border-radius: 50%;
+		}
+
+		/* Personalizzazione della tabella */
+		.table-section {
+			margin-top: 20px;
+		}
+
+		.table-bordered th,
+		.table-bordered td {
+			border: 1px solid rgb(0, 0, 255);
+		}
+
+		table {
+			width: 50%;
+		}
+
+		/* Riduci la larghezza dei form */
+		.card-body form {
+			width: 80%;
+		}
+
+		.form-group {
+			margin-bottom: 10px;
+		}
+
+		/* Riduci la larghezza delle select */
+		input {
+			width: 80%;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- Navbar -->
+	<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+	<!-- Container principale -->
+	<div class="container mt-5">
+		<div class="row">
+			<!-- Colonna per la tabella delle classi -->
+			<div class="col-md-4">
+				<div class="card rounded-lg box-shadow">
+					<div class="card-header">
+						<h2>Classi Disponibili</h2>
+					</div>
+					<div class="card-body">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Anno Scolastico</th>
+									<th>Sezione</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="classe : ${classi}">
+									<td th:text="${classe.id}"></td>
+									<td th:text="${classe.annoScolastico}"></td>
+									<td th:text="${classe.sezione}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<!-- Colonna per i form di ricerca -->
+			<div class="col-md-8">
+				<!-- Card per la ricerca per nome -->
+				<div class="card rounded-lg box-shadow">
+					<div class="card-header">
+						<h2>Ricerca Studenti per Nome</h2>
+					</div>
+					<div class="card-body">
+						<form th:action="@{/studenti/cercaPerNome}" method="get" id="Studente" th:object="${studente}"
+							name="Studente">
+							<div class="form-group">
+								<label for="nomeStudente">Nome e cognome dello studente:</label>
+								<input type="text" class="form-control" id="nomeStudente" name="nomeStudente">
+							</div>
+							<button type="submit" class="btn btn-primary" id="cercaNomeBtn" disabled>Cerca per nome</button>
+						</form>
+					</div>
+				</div>
+
+				<!-- Card per la ricerca per cognome -->
+				<div class="card rounded-lg box-shadow">
+					<div class="card-header">
+						<h2>Ricerca Studenti per Cognome</h2>
+					</div>
+					<div class="card-body">
+						<form th:action="@{/ricerca}" method="get">
+							<div class="form-group">
+								<label for="cognomeStudente">Cognome dello studente:</label>
+								<input type="text" class="form-control" id="cognomeStudente" name="cognomeStudente"
+									placeholder="Inserisci il cognome dello studente">
+							</div>
+							<button type="submit" class="btn btn-primary" id="cercaCognomeBtn" disabled>Cerca per cognome</button>
+						</form>
+					</div>
+				</div>
+
+				<!-- Card per la ricerca per email -->
+				<div class="card rounded-lg box-shadow">
+					<div class="card-header">
+						<h2>Ricerca Studenti per Email</h2>
+					</div>
+					<div class="card-body">
+						<form th:action="@{/ricerca}" method="get">
+							<div class="form-group">
+								<label for="emailStudente">Email dello studente:</label>
+								<input type="text" class="form-control" id="emailStudente" name="emailStudente"
+									placeholder="Inserisci l'email dello studente">
+							</div>
+							<button type="submit" class="btn btn-primary" id="cercaEmailBtn" disabled>Cerca per email</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Includi Bootstrap JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script>
+		// Funzione per abilitare/disabilitare il pulsante di invio
+		function toggleButton(inputId, buttonId) {
+			const inputElement = document.getElementById(inputId);
+			const buttonElement = document.getElementById(buttonId);
+
+			// Aggiungi un event listener per l'input
+			inputElement.addEventListener('input', function() {
+				// Controlla se il campo di input è vuoto
+				if (inputElement.value.trim() !== '') {
+					buttonElement.disabled = false;
+				} else {
+					buttonElement.disabled = true;
+				}
+			});
+		}
+		
+		
+		
+		// Attiva/disattiva i pulsanti di invio per ciascun form
+		document.addEventListener('DOMContentLoaded', function() {
+			toggleButton('nomeStudente', 'cercaNomeBtn');
+			toggleButton('cognomeStudente', 'cercaCognomeBtn');
+			toggleButton('emailStudente', 'cercaEmailBtn');
+		});
+	</script> 
+</body>
+
+</html>

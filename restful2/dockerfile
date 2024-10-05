@@ -1,0 +1,55 @@
+
+
+
+# Usa l'immagine base di Maven per costruire il progetto
+#FROM maven:3.8.4-openjdk-17 AS build
+#WORKDIR /app
+
+# Copia i file del progetto nella directory di lavoro
+#COPY pom.xml .
+#COPY src ./src
+
+# Compila il progetto utilizzando Maven
+#RUN mvn clean package -DskipTests
+
+# Usa un'immagine base di JDK per eseguire il progetto
+#FROM openjdk:17-jdk-alpine
+#WORKDIR /app
+
+# Copia l'artefatto compilato dalla fase di build
+#COPY --from=build /app/target/spring-docker-0.0.1-SNAPSHOT.jar app.jar
+
+# Esegui l'applicazione
+#ENTRYPOINT ["java", "-jar", "app.jar"]
+
+
+
+
+############################################################################
+#FROM openjdk:17-jdk-alpine
+#VOLUME /tmp
+#COPY target/restful2-0.0.1-SNAPSHOT.jar app.jar
+#ENTRYPOINT ["java","-jar","/app.jar"]
+
+
+############################################################################
+
+# Dockerfile per l'applicazione Spring Boot
+
+# Usa OpenJDK 17 su Alpine come immagine base
+FROM openjdk:17-jdk-alpine
+
+# Crea un volume temporaneo per memorizzare i dati temporanei dell'app
+VOLUME /tmp
+
+# Copia il file JAR generato nel container
+COPY target/restful2-0.0.1-SNAPSHOT.jar app.jar
+
+# Esponi la porta 8085 su cui l'applicazione ascolta all'interno del container
+EXPOSE 8085
+
+# Definisci il comando di avvio per il container
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+
+
+

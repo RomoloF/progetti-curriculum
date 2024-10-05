@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettagli Classe</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        .btn-primary,
+        .btn-secondary,
+        .btn-danger 
+        .btn-success{
+            border-radius: 25px; /* Rounded corners */
+            padding: 5px 10px; /* Adjust padding as needed */
+            font-size: 12px; /* Riduci la grandezza del font */
+                }
+
+    </style>
+</head>
+<body>
+	  <!-- Utilizzo della sintassi racchiusa per il frammento -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+	<Div>
+ <a href="/" class="btn btn-secondary mb-3">Torna alla Home</a>
+ <a href="/" class="btn btn-secondary mb-3">Torna alla Home</a>
+ 
+   </Div>
+  <div class="container mt-3">
+    <h1>Dettagli Classe</h1>
+    <div class="mb-3">
+      <label for="id" class="form-label">ID:</label>
+      <input type="text" class="form-control" id="id" name="id" th:value="${classe.id}" readonly>
+    </div>
+    <div class="mb-3">
+      <label for="annoScolastico" class="form-label">Anno Scolastico:</label>
+      <input type="text" class="form-control" id="annoScolastico" name="annoScolastico" th:value="${classe.annoScolastico}" readonly>
+    </div>
+    <div class="mb-3">
+      <label for="classeAnno" class="form-label">Classe e Anno:</label>
+      <input type="text" class="form-control" id="classeAnno" name="classeAnno" th:value="${classe.classeAnno}" readonly>
+    </div>
+    <div class="mb-3">
+      <label for="sezione" class="form-label">Sezione:</label>
+      <input type="text" class="form-control" id="sezione" name="sezione" th:value="${classe.sezione}" readonly>
+    </div>
+    <div class="mb-3">
+      <label for="aulaNum" class="form-label">Numero Aula:</label>
+      <input type="text" class="form-control" id="aulaNum" name="aulaNum" th:value="${classe.aulaNum}" readonly>
+    </div>
+    <div class="mb-3">
+      <label for="piano" class="form-label">Piano:</label>
+      <input type="text" class="form-control" id="piano" name="piano" th:value="${classe.piano}" readonly>
+    </div>
+    <div class="btn-group">
+      <a th:href="@{/classi/modifica/{id}(id=${classe.id})}" class="btn btn-secondary btn-sm ">Modifica</a>
+      <a th:href="@{/classi/elimina/{id}(id=${classe.id})}" class="btn btn-danger btn-sm ">Elimina</a>
+    </div>
+  </div>
+  <div class="btn-group">
+              <a th:href="@{/classi/{id}(id=${classe.id})}"                 class="btn btn-primary btn-sm btn-rounded" >Visualizza</a>
+              <a th:href="@{/classi/modifica/{id}(id=${classe.id})}"        class="btn btn-secondary btn-sm btn-rounded">Modifica</a>
+              <a th:href="@{/classi/elimina/{id}(id=${classe.id})}"         class="btn btn-danger btn-sm btn-rounded">Elimina</a>
+            </div>
+<!-- Includi jQuery, Popper.js e Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
